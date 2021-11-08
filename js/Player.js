@@ -10,6 +10,18 @@ class Player {
     this.score = 0;
   }
 
+  getCarsAtEnd(){
+    database.ref('CarsAtEnd').on("value",(data)=>{
+      this.rank=data.val()
+    })
+  }
+
+  static updateCarsAtEnd(rank){
+    database.ref("/").update({
+      CarsAtEnd:rank
+    })
+  }
+  
   addPlayer() {
     var playerIndex = "players/player" + this.index;
 
